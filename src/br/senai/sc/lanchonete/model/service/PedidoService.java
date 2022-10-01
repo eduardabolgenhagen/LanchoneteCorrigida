@@ -5,19 +5,44 @@ import br.senai.sc.lanchonete.model.entities.Pedido;
 
 public class PedidoService {
 
-    //Cadastrar pedido
-    public void cadastrar (Pedido pedido){
+    /**
+     * Mandar pedido para PedidoDAO, como parâmetro:
+     *
+     * @param pedido
+     */
+    public void cadastrar(Pedido pedido) {
         new PedidoDAO().inserir(pedido);
     }
 
-    public Pedido buscarPorCódigo(Integer codigo){
-        return null;
+    /**
+     * Buscar pedido específico, passando o parâmetro:
+     *
+     * @param codigo
+     */
+//    public Pedido buscarPorCódigo(Integer codigo) {
+//        return PedidoDAO.buscarPorCodigo(codigo);
+//    }
+
+    /**
+     * Mandar para atualizar em PedidoDAO com os seguintes parâmetros:
+     *
+     * @param codigoPedido
+     * @param pedido
+     */
+    public void atualizar(Integer codigoPedido, Pedido pedido) {
+        new PedidoDAO().atualizarPedido(codigoPedido, pedido);
     }
 
-    public void atualizarPedido(Pedido pedido){
-
+    /**
+     * Trazer parâmetros do Controller e atualizar o objeto
+     *
+     * @param pedido
+     * @param novoPreco
+     */
+    public void atualizarPedido(Pedido pedido, double novoPreco) {
+        pedido.setPreco(novoPreco);
+        atualizar(pedido.getCodigo(), pedido);
     }
-
 
 }
 

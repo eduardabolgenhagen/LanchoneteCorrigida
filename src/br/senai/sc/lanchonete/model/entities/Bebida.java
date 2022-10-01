@@ -1,15 +1,27 @@
 package br.senai.sc.lanchonete.model.entities;
 
-public class Bebida extends Pedido {
-    private double volume;
+public class Bebida {
+    private double preco, volume;
+    private Integer codigo;
+    private String descricao;
 
-    public Bebida(int codigo, double preco, String descricao, double volume) {
-        super(codigo, descricao, preco);
+    public Bebida(Integer codigo, double preco, String descricao, double volume) {
+        this.codigo = codigo;
+        this.preco = preco;
+        this.descricao = descricao;
         this.volume = volume;
     }
 
-    public Bebida() {
+    public static Bebida cadastrar(Integer codigo, String descricao, double preco, double adicional) {
+        return new Bebida(codigo, preco, descricao, adicional);
+    }
 
+    public double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
     }
 
     public double getVolume() {
@@ -20,8 +32,19 @@ public class Bebida extends Pedido {
         this.volume = volume;
     }
 
-    @Override
-    public String toString() {
-        return this.getCodigo() + "\t" + this.getDescricao() + "\t" + this.getVolume() + "\t" + this.getPreco();
+    public Integer getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(Integer codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 }

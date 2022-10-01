@@ -23,9 +23,9 @@ public class Pedido {
         this.tipo = tipo;
     }
 
-    public static Pedido cadastrar(Integer codigo, String descricao, double preco, String adicional, Tipo tipo) {
-        return new Pedido(codigo, descricao, preco, adicional, tipo);
-    }
+//    public static Pedido cadastrar(Integer codigo, String descricao, double preco, String adicional, Integer tipo) {
+//        return new Pedido(codigo, descricao, preco, adicional, tipo);
+//    }
 
     public String getDescricao() {
         return descricao;

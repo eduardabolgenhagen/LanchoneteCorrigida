@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
+import java.util.concurrent.ExecutionException;
 
 public class LancheDAO {
     private Connection conn;
@@ -84,8 +85,20 @@ public class LancheDAO {
     }
 
     public void editarLanche(Integer codigo, double novoPreco) throws SQLException {
-//        String comandoSQL = "ALTER TABLE "
+        String comandoSQL = "ALTER TABLE LANCHES WHERE codigoLanche = codigo";
+
+        try (PreparedStatement pstm = conn.prepareStatement(comandoSQL)) {
+            pstm.setDouble(codigo, novoPreco);
+            try {
+                pstm.execute();
+            } catch (Exception e) {
+                throw new RuntimeException("ERRO AO EDITAR O LANCHE 001");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("ERRO AO EDITAR O LANCHE 002");
+        }
     }
+
     private Lanche extrairObjetoLanche(ResultSet resultSet) {
         try {
             return new LancheFactory().getLanche(

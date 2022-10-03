@@ -22,23 +22,11 @@ public class MainPoli {
         System.out.print("" + "----------MENU----------\n" + "1 - Listar\n" + "2 - Cadastrar\n" + "3 - Editar\n"
                 + "4 - Remover\n" + "5 - Encerrar\n" + "> ");
         switch (sc.nextInt()) {
-            case 1:
-                listar(selecionaTipo("listar"));
-                break;
-            case 2:
-                cadastrarPedido(selecionaTipo("cadastrar"));
-                break;
-
-            case 3:
-                editar(selecionaTipo("editar"));
-                break;
-
-            case 4:
-                remover(selecionaTipo("remover"));
-                break;
-
-            case 5:
-                System.exit(0);
+            case 1 -> { listar(selecionaTipo("listar")); }
+            case 2 -> { cadastrarPedido(selecionaTipo("cadastrar")); }
+            case 3 -> { editar(selecionaTipo("editar")); }
+            case 4 -> { remover(selecionaTipo("remover")); }
+            case 5 -> { System.exit(0); }
         }
     }
 
@@ -52,6 +40,7 @@ public class MainPoli {
         return tipo;
     }
 
+    //COLOCAR EM UTILIZAÇÃO PARA VERIFICAR SE JÁ EXISTE ALGUM PEDIDO COM AQUELE CÓDIGO
     private static int valida(int tipo, int codigo) {
 //
 //		switch (tipo) {

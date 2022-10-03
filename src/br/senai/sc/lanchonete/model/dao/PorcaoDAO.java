@@ -1,9 +1,7 @@
 package br.senai.sc.lanchonete.model.dao;
 
-import br.senai.sc.lanchonete.model.entities.Lanche;
 import br.senai.sc.lanchonete.model.entities.Porcao;
 import br.senai.sc.lanchonete.model.factory.ConexaoFactory;
-import br.senai.sc.lanchonete.model.factory.LancheFactory;
 import br.senai.sc.lanchonete.model.factory.PorcaoFactory;
 
 import java.sql.Connection;
@@ -88,4 +86,18 @@ public class PorcaoDAO {
         }
     }
 
+    public void editarPorcao(Integer codigo, double novoPreco) {
+        String comandoSQL = "ALTER TABLE PORCOES WHERE codigoPorcao = codigo";
+
+        try (PreparedStatement pstm = conn.prepareStatement(comandoSQL)) {
+            pstm.setDouble(codigo, novoPreco);
+            try {
+                pstm.execute();
+            } catch (Exception e) {
+                throw new RuntimeException("ERRO AO EDITAR O PORCOES 001");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("ERRO AO EDITAR O PORCOES 002");
+        }
+    }
 }

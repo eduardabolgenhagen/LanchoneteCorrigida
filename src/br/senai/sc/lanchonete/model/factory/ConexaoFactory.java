@@ -11,7 +11,7 @@ public class ConexaoFactory {
     public Connection connectDB() {
         try {
             return DriverManager.getConnection(url, username, password);
-        } catch (Exception e){
+        } catch (Exception e) {
             throw new RuntimeException("Erro na conexão.");
         }
     }

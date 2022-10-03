@@ -12,11 +12,12 @@ public class PedidoController {
     /**
      * Cadastro sendo enviado para seu respectivo Controller, conforme o seu tipo, passando os seguintes parâmetros:
      *
-     * @param codigo
-     * @param descricao
-     * @param preco
-     * @param adicional
-     * @param tipo
+     * @param codigo    do Pedido
+     * @param descricao do Pedido
+     * @param preco     do Pedido
+     * @param adicional de cada Pedido, que difere conforme o seu tipo
+     * @param tipo      do Pedido: Lanche, Bebida ou Porção
+     * @autor Eduarda Bolgenhagen De Campos
      */
     public static void cadastrarPedido(Integer codigo, String descricao, double preco, String adicional, Integer tipo)
             throws SQLException {
@@ -36,23 +37,43 @@ public class PedidoController {
     }
 
     /**
-     * Buscar pedidos no qual direciona para Lanche, Bebida ou Porções dependendo do parâmetro:
+     * Buscar todos os Lanches cadastrados
      *
-     * @return
+     * @return Collection de Lanche
+     * @autor Eduarda Bolgenhagen De Campos
      */
     public Collection<Lanche> buscarPedidosLanche() throws SQLException {
         return new LancheController().buscarTodosLanches();
     }
 
+    /**
+     * Busca todas as Bebidas cadastradas
+     *
+     * @return Collection de Bebida
+     * @autor Eduarda Bolgenhagen De Campos
+     */
     public Collection<Bebida> buscarPedidosBebidas() throws SQLException {
         return new BebidaController().buscarTodasBebidas();
     }
 
+    /**
+     * Busca todas as porções cadastradas
+     *
+     * @return Collection de Porção
+     * @autor Eduarda Bolgenhagen De Campos
+     */
     public Collection<Porcao> buscarPedidosPorcoes() throws SQLException {
         return new PorcaoController().buscarTodasPorcoes();
     }
 
-    public void removerPedido(Integer tipo,Integer codigo) throws SQLException {
+    /**
+     * Remove um tipo de pedido, recebendo os seguintes parâmetros:
+     *
+     * @param tipo   do Pedido
+     * @param codigo do Pedido
+     * @autor Eduarda Bolgenhagen De Campos
+     */
+    public void removerPedido(Integer tipo, Integer codigo) throws SQLException {
         switch (tipo) {
             case 1 -> {
                 new LancheController().removerLanche(codigo);
@@ -61,37 +82,36 @@ public class PedidoController {
                 new BebidaController().removerBebida(codigo);
             }
             case 3 -> {
-//                PorcaoController().removerPorcao(codigo);
+                new PorcaoController().removerPorcao(codigo);
             }
         }
 
     }
 
-    public void editarPedido(Integer tipo, Integer codigo, double novoPreco){
-        switch (tipo){
+    /**
+     * Edita o preço do pedido já cadastrado, recebendo os seguintes parâmetros:
+     *
+     * @param tipo      do Pedido
+     * @param codigo    do Pedido
+     * @param novoPreco a ser atribuído ao Pedido
+     * @autor Eduarda Bolgenhagen De Campos
+     */
+    public void editarPedido(Integer tipo, Integer codigo, double novoPreco) throws SQLException {
+        switch (tipo) {
             case 1 -> {
                 new LancheController().editarLanche(codigo, novoPreco);
             }
-            case 2 ->{
-//                new BebidaController().editarBebida(codigo, novoPreco);
+            case 2 -> {
+                new BebidaController().editarBebida(codigo, novoPreco);
             }
-            case 3 ->{
-//                new PorcaoController().editarPorcao(codigo, novoPreco);
+            case 3 -> {
+                new PorcaoController().editarPorcao(codigo, novoPreco);
             }
         }
     }
 
-//    /**
-//     * Buscar pedido por código, parrando como parâmetro:
-//     *
-//     * @param codigo
-//     */
-//    public Pedido buscarPorCodigo(Integer codigo) {
-//        return new PedidoService().buscarPorCódigo(codigo);
-//    }
-
-
-
-
+    //FALTA:
+    //- BUSCAR PEDIDO POR CÓDIDO
+    //- VALIDAÇÃO SE O CÓDIGO JÁ EXISTE
 }
 

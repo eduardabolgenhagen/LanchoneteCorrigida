@@ -87,4 +87,19 @@ public class BebidaDAO {
             throw new RuntimeException("Erro ao extrair o objeto.");
         }
     }
+
+    public void editarBebida(Integer codigo, double novoPreco) {
+        String comandoSQL = "ALTER TABLE BEBIDAS WHERE codigoBebida = codigo";
+
+        try (PreparedStatement pstm = conn.prepareStatement(comandoSQL)) {
+            pstm.setDouble(codigo, novoPreco);
+            try {
+                pstm.execute();
+            } catch (Exception e) {
+                throw new RuntimeException("ERRO AO EDITAR O BEBIDA 001");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("ERRO AO EDITAR O BEBIDA 002");
+        }
+    }
 }

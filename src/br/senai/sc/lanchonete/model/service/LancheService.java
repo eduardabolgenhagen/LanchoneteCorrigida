@@ -7,18 +7,10 @@ import java.sql.SQLException;
 import java.util.Collection;
 
 public class LancheService {
-    /**
-     * Recebe do Controller para enviar para o DAO
-     */
     public void inserirLanche(Lanche lanche) throws SQLException {
         new LancheDAO().inserirLanche(lanche);
     }
 
-    /**
-     * Manda para o DAO o tipo necessário que deve buscar
-     *
-     * @return
-     */
     public Collection<Lanche> buscarLanches() throws SQLException {
         return new LancheDAO().buscarTodosLanches();
     }
@@ -27,7 +19,7 @@ public class LancheService {
         new LancheDAO().removerLanche(codigo);
     }
 
-    public void editarLanche(Integer codigo, double novoPreco) {
-//        new LancheDAO().editarLanche(codigo, novoPreco);
+    public void editarLanche(Integer codigo, double novoPreco) throws SQLException {
+        new LancheDAO().editarLanche(codigo, novoPreco);
     }
 }

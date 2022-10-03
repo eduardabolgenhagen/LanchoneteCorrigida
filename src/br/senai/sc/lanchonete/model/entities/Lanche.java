@@ -28,6 +28,7 @@ public class Lanche {
         return peso;
     }
 
+    //VERIFICAR UTILIDADE
     public void setPeso(double peso) {
         this.peso = peso;
     }

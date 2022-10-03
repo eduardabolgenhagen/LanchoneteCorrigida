@@ -38,42 +38,49 @@ public class PedidoController {
     /**
      * Buscar pedidos no qual direciona para Lanche, Bebida ou Porções dependendo do parâmetro:
      *
-     * @param tipo
      * @return
      */
-    public Collection<Lanche> buscarPedidosLanche(Integer tipo) throws SQLException {
-        return LancheController.buscarTodosLanches();
+    public Collection<Lanche> buscarPedidosLanche() throws SQLException {
+        return new LancheController().buscarTodosLanches();
     }
 
-    public Collection<Bebida> buscarPedidosBebidas(Integer tipo) throws SQLException {
-        return BebidaController.buscarTodasBebidas();
+    public Collection<Bebida> buscarPedidosBebidas() throws SQLException {
+        return new BebidaController().buscarTodasBebidas();
     }
 
-    public Collection<Porcao> buscarPedidosPorcoes(Integer tipo) throws SQLException {
+    public Collection<Porcao> buscarPedidosPorcoes() throws SQLException {
         return new PorcaoController().buscarTodasPorcoes();
     }
 
-    public void removerPedido(Integer tipo, Integer codigo) throws SQLException {
+    public void removerPedido(Integer tipo,Integer codigo) throws SQLException {
         switch (tipo) {
             case 1 -> {
-                LancheController.removerLanche(codigo);
+                new LancheController().removerLanche(codigo);
             }
             case 2 -> {
-//                BebidaController.removerBebida(codigo);
+                new BebidaController().removerBebida(codigo);
             }
             case 3 -> {
-//                PorcaoController.removerPorcao(codigo);
+//                PorcaoController().removerPorcao(codigo);
             }
         }
 
     }
 
+    public void editarPedido(Integer tipo, Integer codigo, double novoPreco){
+        switch (tipo){
+            case 1 -> {
+                new LancheController().editarLanche(codigo, novoPreco);
+            }
+            case 2 ->{
+//                new BebidaController().editarBebida(codigo, novoPreco);
+            }
+            case 3 ->{
+//                new PorcaoController().editarPorcao(codigo, novoPreco);
+            }
+        }
+    }
 
-//
-//
-//
-//    //Buscar pedido por código
-//
 //    /**
 //     * Buscar pedido por código, parrando como parâmetro:
 //     *
@@ -82,17 +89,8 @@ public class PedidoController {
 //    public Pedido buscarPorCodigo(Integer codigo) {
 //        return new PedidoService().buscarPorCódigo(codigo);
 //    }
-//
-//    /**
-//     * Editar preço do pedido passando como parâmetro:
-//     *
-//     * @param pedido
-//     */
-//    //Editar pedidos
-//    public void atualizarPedido(Pedido pedido, Double novoPreco) {
-//        new PedidoService().atualizarPedido(pedido, novoPreco);
-//        return;
-//    }
+
+
 
 
 }

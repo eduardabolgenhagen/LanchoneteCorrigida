@@ -1,6 +1,7 @@
 package br.senai.sc.lanchonete.model.service;
 
 import br.senai.sc.lanchonete.model.dao.BebidaDAO;
+import br.senai.sc.lanchonete.model.dao.LancheDAO;
 import br.senai.sc.lanchonete.model.entities.Bebida;
 
 import java.sql.SQLException;
@@ -16,5 +17,9 @@ public class BebidaService {
 
     public Collection<Bebida> buscarBebidas() throws SQLException {
         return new BebidaDAO().buscarTodasBebidas();
+    }
+
+    public void removerBebida(Integer codigo) throws SQLException {
+        new BebidaDAO().removerBebida(codigo);
     }
 }

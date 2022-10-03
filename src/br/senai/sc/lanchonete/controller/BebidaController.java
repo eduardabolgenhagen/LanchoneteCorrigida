@@ -2,6 +2,7 @@ package br.senai.sc.lanchonete.controller;
 
 import br.senai.sc.lanchonete.model.entities.Bebida;
 import br.senai.sc.lanchonete.model.service.BebidaService;
+import br.senai.sc.lanchonete.model.service.LancheService;
 
 import java.sql.SQLException;
 import java.util.Collection;
@@ -26,8 +27,12 @@ public class BebidaController {
      *
      * @return
      */
-    public static Collection<Bebida> buscarTodasBebidas() throws SQLException{
+    public Collection<Bebida> buscarTodasBebidas() throws SQLException{
         return new BebidaService().buscarBebidas();
+    }
+
+    public void removerBebida(Integer codigo) throws SQLException {
+        new BebidaService().removerBebida(codigo);
     }
 
 }

@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class ConexaoFactory {
-    private String url = "jdbc:mysql://localhost:3306/lanchonetecorrigida";
+    private String url = "jdbc:mysql://localhost:3306/lanchoneteCorrigida";
     private String username = "root";
     private String password = "root";
 

@@ -16,6 +16,7 @@ public class LancheService {
 
     /**
      * Manda para o DAO o tipo necessário que deve buscar
+     *
      * @return
      */
     public Collection<Lanche> buscarLanches() throws SQLException {
@@ -24,5 +25,9 @@ public class LancheService {
 
     public void removerLanche(Integer codigo) throws SQLException {
         new LancheDAO().removerLanche(codigo);
+    }
+
+    public void editarLanche(Integer codigo, double novoPreco) {
+//        new LancheDAO().editarLanche(codigo, novoPreco);
     }
 }

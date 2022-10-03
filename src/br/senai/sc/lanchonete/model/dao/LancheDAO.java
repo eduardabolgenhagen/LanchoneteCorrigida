@@ -70,19 +70,22 @@ public class LancheDAO {
      * @param codigo
      */
     public void removerLanche(Integer codigo) throws SQLException {
-        String sqlCommand = "DELETE FROM LANCHES WHERE codigoLanche = ?";
-        try (PreparedStatement pstm = conn.prepareStatement(sqlCommand)) {
+        String comandoSQL = "DELETE FROM LANCHES WHERE codigoLanche = ?";
+        try (PreparedStatement pstm = conn.prepareStatement(comandoSQL)) {
             pstm.setInt(1, codigo);
             try {
                 pstm.execute();
             } catch (Exception e) {
-                throw new RuntimeException("Erro na preparação do comando sql 1");
+                throw new RuntimeException("AQUI GERA O ERRO 1 AO REMOVER LANCHE");
             }
         } catch (Exception e) {
-            throw new RuntimeException("Erro na preparação do comando sql 2");
+            throw new RuntimeException("AQUI GERA O ERRO 2 AO REMOVER LANCHE");
         }
     }
 
+    public void editarLanche(Integer codigo, double novoPreco) throws SQLException {
+//        String comandoSQL = "ALTER TABLE "
+    }
     private Lanche extrairObjetoLanche(ResultSet resultSet) {
         try {
             return new LancheFactory().getLanche(

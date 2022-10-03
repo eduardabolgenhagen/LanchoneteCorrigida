@@ -62,6 +62,20 @@ public class BebidaDAO {
         }
     }
 
+    public void removerBebida(Integer codigo) throws SQLException {
+        String sqlCommand = "DELETE FROM BEBIDAS WHERE codigoBebida = ?";
+        try (PreparedStatement pstm = conn.prepareStatement(sqlCommand)) {
+            pstm.setInt(1, codigo);
+            try {
+                pstm.execute();
+            } catch (Exception e) {
+                throw new RuntimeException("AQUI GERA O ERRO 1 AO REMOVER BEBIDA");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("AQUI GERA O ERRO 2 AO REMOVER BEBIDA");
+        }
+    }
+
     private Bebida extrairObjetoBebida(ResultSet resultSet) {
         try {
             return new BebidaFactory().getBebida(

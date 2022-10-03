@@ -47,7 +47,7 @@ public class PorcaoDAO {
         System.out.println("CADASTRO DE PORCAO CHEGOU AO FIM");
     }
 
-    public Porcao buscarPorcoes() throws SQLException {
+    public Collection<Porcao> buscarPorcoes() throws SQLException {
         String comandoSQL = "SELECT * FROM PORCOES";
         PreparedStatement prtm = conn.prepareStatement(comandoSQL);
 
@@ -59,6 +59,20 @@ public class PorcaoDAO {
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException("AQUI GERA O ERRO 003 NO LANCHEDAO");
+        }
+    }
+
+    public void removerPorcao(Integer codigo) throws SQLException {
+        String sqlCommand = "DELETE FROM PORCOES WHERE codigoPorcao = ?";
+        try (PreparedStatement pstm = conn.prepareStatement(sqlCommand)) {
+            pstm.setInt(1, codigo);
+            try {
+                pstm.execute();
+            } catch (Exception e) {
+                throw new RuntimeException("AQUI GERA O ERRO 1 AO REMOVER PORCAO");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("AQUI GERA O ERRO 2 AO REMOVER PORCAO");
         }
     }
 

@@ -22,15 +22,18 @@ public class LancheController {
 
     /**
      * Buscar todos os Lanches existentes
+     *
      * @return
      */
-    public static Collection<Lanche> buscarTodosLanches() throws SQLException {
+    public Collection<Lanche> buscarTodosLanches() throws SQLException {
         return new LancheService().buscarLanches();
     }
 
-    public static void removerLanche(Integer codigo) throws SQLException {
+    public void removerLanche(Integer codigo) throws SQLException {
         new LancheService().removerLanche(codigo);
     }
 
-
+    public void editarLanche(Integer codigo, double novoPreco){
+        new LancheService().editarLanche(codigo, novoPreco);
+    }
 }

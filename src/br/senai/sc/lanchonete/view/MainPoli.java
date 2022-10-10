@@ -3,7 +3,6 @@ package br.senai.sc.lanchonete.view;
 import br.senai.sc.lanchonete.controller.PedidoController;
 import br.senai.sc.lanchonete.model.entities.Bebida;
 import br.senai.sc.lanchonete.model.entities.Lanche;
-import br.senai.sc.lanchonete.model.entities.Pedido;
 import br.senai.sc.lanchonete.model.entities.Porcao;
 
 import java.sql.SQLException;
@@ -49,7 +48,6 @@ public class MainPoli {
         }
         return tipo;
     }
-
 
     private static void listar(int tipo) throws SQLException {
         switch (tipo) {

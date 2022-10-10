@@ -1,10 +1,8 @@
 package br.senai.sc.lanchonete.model.dao;
 
 import br.senai.sc.lanchonete.model.entities.Bebida;
-import br.senai.sc.lanchonete.model.entities.Lanche;
 import br.senai.sc.lanchonete.model.factory.BebidaFactory;
 import br.senai.sc.lanchonete.model.factory.ConexaoFactory;
-import br.senai.sc.lanchonete.model.factory.LancheFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

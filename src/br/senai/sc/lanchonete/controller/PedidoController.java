@@ -109,9 +109,5 @@ public class PedidoController {
             }
         }
     }
-
-    //FALTA:
-    //- BUSCAR PEDIDO POR CÓDIDO
-    //- VALIDAÇÃO SE O CÓDIGO JÁ EXISTE
 }
 

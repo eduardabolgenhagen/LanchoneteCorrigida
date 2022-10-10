@@ -22,11 +22,21 @@ public class MainPoli {
         System.out.print("" + "----------MENU----------\n" + "1 - Listar\n" + "2 - Cadastrar\n" + "3 - Editar\n"
                 + "4 - Remover\n" + "5 - Encerrar\n" + "> ");
         switch (sc.nextInt()) {
-            case 1 -> { listar(selecionaTipo("listar")); }
-            case 2 -> { cadastrarPedido(selecionaTipo("cadastrar")); }
-            case 3 -> { editar(selecionaTipo("editar")); }
-            case 4 -> { remover(selecionaTipo("remover")); }
-            case 5 -> { System.exit(0); }
+            case 1 -> {
+                listar(selecionaTipo("listar"));
+            }
+            case 2 -> {
+                cadastrarPedido(selecionaTipo("cadastrar"));
+            }
+            case 3 -> {
+                editar(selecionaTipo("editar"));
+            }
+            case 4 -> {
+                remover(selecionaTipo("remover"));
+            }
+            case 5 -> {
+                System.exit(0);
+            }
         }
     }
 
@@ -40,34 +50,6 @@ public class MainPoli {
         return tipo;
     }
 
-    //COLOCAR EM UTILIZAÇÃO PARA VERIFICAR SE JÁ EXISTE ALGUM PEDIDO COM AQUELE CÓDIGO
-    private static int valida(int tipo, int codigo) {
-//
-//		switch (tipo) {
-//		case 1:
-//			for (int i = 0; i < listaLanches.size(); i++) {
-//				if (codigo == listaLanches.get(i).getCodigo()) {
-//					return i;
-//				}
-//			}
-//			break;
-//		case 2:
-//			for (int i = 0; i < listaBebidas.size(); i++) {
-//				if (codigo == listaBebidas.get(i).getCodigo()) {
-//					return i;
-//				}
-//			}
-//			break;
-//		case 3:
-//			for (int i = 0; i < listaPorcoes.size(); i++) {
-//				if (codigo == listaPorcoes.get(i).getCodigo()) {
-//					return i;
-//				}
-//			}
-//			break;
-//		}
-        return -1;
-    }
 
     private static void listar(int tipo) throws SQLException {
         switch (tipo) {
@@ -84,37 +66,33 @@ public class MainPoli {
                 System.out.println(pedidos);
             }
         }
+        menu();
     }
 
     private static void cadastrarPedido(int tipo) throws SQLException {
-        Pedido pedido = new Pedido();
         System.out.println("Código: ");
         Integer codigo = sc.nextInt();
-        int posicao = valida(tipo, pedido.getCodigo());
-        if (posicao != -1) {
-            System.out.println("Código inválido!");
-        } else {
-            System.out.println("Descrição: ");
-            String descricao = sc.next();
-            System.out.println("Preço: ");
-            double preco = sc.nextDouble();
-            String adicional = null;
-            switch (tipo) {
-                case 1 -> {
-                    System.out.println("Peso: ");
-                    adicional = sc.next();
-                }
-                case 2 -> {
-                    System.out.println("Volume: ");
-                    adicional = sc.next();
-                }
-                case 3 -> {
-                    System.out.println("Tamanho: ");
-                    adicional = sc.next();
-                }
+        System.out.println("Descrição: ");
+        String descricao = sc.next();
+        System.out.println("Preço: ");
+        double preco = sc.nextDouble();
+        String adicional = null;
+        switch (tipo) {
+            case 1 -> {
+                System.out.println("Peso: ");
+                adicional = sc.next();
             }
-            PedidoController.cadastrarPedido(codigo, descricao, preco, adicional, tipo);
+            case 2 -> {
+                System.out.println("Volume: ");
+                adicional = sc.next();
+            }
+            case 3 -> {
+                System.out.println("Tamanho: ");
+                adicional = sc.next();
+            }
         }
+        PedidoController.cadastrarPedido(codigo, descricao, preco, adicional, tipo);
+        menu();
     }
 
     private static void editar(int tipo) throws SQLException {
@@ -123,12 +101,14 @@ public class MainPoli {
         System.out.println("Qual o novo preço? ");
         Double novoPreco = sc.nextDouble();
         new PedidoController().editarPedido(tipo, codigo, novoPreco);
+        menu();
     }
 
     private static void remover(int tipo) throws SQLException {
         System.out.println("Insira o codigo do item a ser removido: ");
         Integer codigoPedido = sc.nextInt();
         new PedidoController().removerPedido(tipo, codigoPedido);
+        menu();
     }
 
 }

@@ -28,11 +28,6 @@ public class Porcao {
         return tamanho;
     }
 
-    //VERIFICAR UTILIDADE
-    public void setTamanho(String tamanho) {
-        this.tamanho = tamanho;
-    }
-
     public Integer getCodigo() {
         return codigo;
     }

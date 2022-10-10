@@ -28,11 +28,6 @@ public class Bebida {
         return volume;
     }
 
-    //VERIFICAR UTILIDADE
-    public void setVolume(double volume) {
-        this.volume = volume;
-    }
-
     public Integer getCodigo() {
         return codigo;
     }
